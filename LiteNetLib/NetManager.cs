@@ -1506,6 +1506,30 @@ namespace LiteNetLib
         }
 
         /// <summary>
+        /// Get pending events count for single event polling
+        /// </summary>
+        /// <returns></returns>
+        public int GetEventCount()
+        {
+            lock (_netEventsQueue)
+            {
+                return _netEventsQueue.Count;
+            }
+        }
+
+        /// <summary>
+        /// Poll single pending event to be able to pause between events
+        /// </summary>
+        public void PollSingleEvent()
+        {
+            NetEvent evt;
+            lock (_netEventsQueue)
+                evt = _netEventsQueue.Dequeue();
+
+            ProcessEvent(evt);
+        }
+
+        /// <summary>
         /// Connect to remote host
         /// </summary>
         /// <param name="address">Server IP or hostname</param>
