@@ -1,5 +1,8 @@
 {
     "name": "com.pixonic.thirdparty.litenetlib",
     "version": "0.9.5",
-    "displayName": "LiteNetLib"
+    "displayName": "LiteNetLib",
+	"publishConfig": {
+        "registry": "https://nexus.pixapi.net/repository/platform-packages/"
+    }
 }
